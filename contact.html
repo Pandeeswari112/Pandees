@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Innovative Residential Architecture and Villa Design</title>
+<link rel="stylesheet" href="styl.css" />
+<script type="text/javascript">
+// Form Submission
+async function submitForm(event) {
+    event.preventDefault();
+    
+    const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        message: document.getElementById('message').value
+    };
+
+    try {
+        // Backend ku anuppurom
+        const response = await fetch('/api/book-appointment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            alert("Thank you, " + data.name + "! Your appointment is booked. We saved your details in backend!");
+            document.getElementById('appointmentForm').reset();
+        }
+    } catch (error) {
+        alert("Backend connect aagala da! Server run panniya nu paaru.");
+        console.error(error);
+    }
+}
+</script>
+</head>
+
+<body>
+<!-- Header and Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">VillaDesign</div>
+                <ul class="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="projects.html">Our Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="log.html">Log out</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Design Thoughts Section -->
+    <section class="design-thoughts">
+        <div class="container">
+            <h2>Design Philosophy</h2>
+            <p>"Innovation in residential architecture isn't just about creating spaces—it's about crafting experiences that elevate everyday living and harmonize with nature."</p>
+        </div>
+    </section>
+   <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Details -->
+                <div class="contact-details">
+                    <h2>Contact Us</h2>
+                    <div class="contact-info">
+                        <p><strong>📍 Address:</strong><br>
+                        123 Architecture Street<br>
+                        madurai, Tamil Nadu 620001<br>
+                        India</p>
+
+                        <p><strong>📞 Phone:</strong><br>
+                        +91 98765 43210</p>
+
+                        <p><strong>📧 Email:</strong><br>
+                        info@villadesign.com</p>
+
+                        <p><strong>🕐 Working Hours:</strong><br>
+                        Monday - Saturday: 9:00 AM - 6:00 PM<br>
+                        Sunday: By Appointment Only</p>
+
+                        <p><strong>🌐 Follow Us:</strong><br>
+                        Facebook | Instagram | LinkedIn | Pinterest</p>
+                    </div>
+                </div>
+
+                <!-- Appointment Form -->
+                <div class="appointment-form">
+                    <h2>Book an Appointment</h2>
+                    <form id="appointmentForm" onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Preferred Date *</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Preferred Time *</label>
+                            <select id="time" name="time" required>
+                                <option value="">Select Time Slot</option>
+                                <option value="9:00 AM">9:00 AM - 10:00 AM</option>
+                                <option value="10:00 AM">10:00 AM - 11:00 AM</option>
+                                <option value="11:00 AM">11:00 AM - 12:00 PM</option>
+                                <option value="2:00 PM">2:00 PM - 3:00 PM</option>
+                                <option value="3:00 PM">3:00 PM - 4:00 PM</option>
+                                <option value="4:00 PM">4:00 PM - 5:00 PM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Project Details (Optional)</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your villa design project..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Book Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+        <p>📍 123 Architecture Street, Madurai, Tamil Nadu 625001 | 📞 +91 98765 43210</p>
+            <p>&copy; 2026 VillaDesign - Innovative Residential Architecture. All Rights Reserved.</p>
+            <p>Designed By</p>
+            <p>Pandeeswari.P</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Login - VillaDesign</title>
+<link rel="stylesheet" href="styl.css" />
+<style>
+/* Login Page Extra Style */
+.login-body {
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+.login-card {
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center;
+}
+.login-card h2 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+.login-card p {
+    color: #777;
+    margin-bottom: 25px;
+}
+.login-card .form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+.login-card .submit-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.login-card .submit-btn:hover {
+    background: #2980b9;
+}
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+.logo-text span {
+    color: #3498db;
+}
+</style>
+<script>
+function doLogin(event){
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const pass = document.getElementById('pass').value;
+
+    if(email === "" || pass === ""){
+        alert("Please enter email and password da!");
+        return;
+    }
+
+    // Login success - redirect to home page
+    alert("Login Successful! Welcome to VillaDesign");
+    window.location.href = "index.html"; // inga than home page ku pogum
+}
+</script>
+</head>
+
+<body class="login-body">
+    <div class="login-card">
+        <div class="logo-text">Villa<span>Design</span></div>
+        <h2>Welcome Back</h2>
+        <p>Login to continue</p>
+
+        <form onsubmit="doLogin(event)">
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="info@villadesign.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="pass" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+
+        <p style="margin-top:20px; font-size:0.9rem;">Don't have account? <a href="#" style="color:#3498db; text-decoration:none;">Contact Admin</a></p>
+    </div>
+</body>
+</html>
